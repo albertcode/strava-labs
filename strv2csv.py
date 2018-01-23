@@ -28,10 +28,8 @@ print client.get_athlete()
 print '\n'
 out = csv.writer(open("C://Users//hp//Desktop//myfile.csv","w"), delimiter=';',quoting=csv.QUOTE_MINIMAL)
 
-
 # List of activities:
 for activity in client.get_activities(after = "2016-10-31T00:00:00Z", before = "2017-10-31T00:00:00Z", limit=None):
-    # print("{0.name},{0.start_date_local},{0.type},{0.distance},{0.total_elevation_gain},{0.average_speed},{0.moving_time},{0.elapsed_time},{0.location_city},{0.device_name}".format(activity))
     data = []
     name = '{0.name}'.format(activity)
     data.append(name)
@@ -66,18 +64,4 @@ for activity in client.get_activities(after = "2016-10-31T00:00:00Z", before = "
     map = 'https://www.strava.com/activities/' + map
     data.append(map)     
     out.writerow(data)
-    #data.append("{0.name};{0.start_date_local};{0.type};{0.distance};{0.total_elevation_gain};{0.average_speed};{0.moving_time};{0.elapsed_time};{0.location_city};{0.device_name}".format(activity)+'\n')
-    #print("Name:{0.name} Type:{0.type} Dist:{0.distance} Time(mov):{0.moving_time}".format(activity))
-
-
-# X name
-# X distance
-# X moving_time
-# X elapsed_time
-# X total_elevation_gain
-# X type
-# X start_date_local
-# X location_city
-# X average_speed
-# X device_name
     
