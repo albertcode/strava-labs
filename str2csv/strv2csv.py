@@ -9,11 +9,16 @@ __author__ = "Alberto Andrés"
 __license__ = "GPL"
 
 from stravalib import Client
-
 import sys, csv
 reload(sys)
 sys.setdefaultencoding('utf8')
 
+################################################################################
+#   Constants    
+################################################################################
+csv_filepath = "C://Users//hp//Desktop//myfile.csv"
+start_date = "2016-10-31T00:00:00Z"
+end_date = "2017-10-31T00:00:00Z"
 m_in_km_c = 1000.0
 ms2kmh_c = 3.6
 ms2minkm_c = 16.666666666667
@@ -22,24 +27,25 @@ ms2minkm_c = 16.666666666667
 MY_STRAVA_CLIENT_ID=00000
 MY_STRAVA_CLIENT_SECRET='FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF'
 STORED_ACCESS_TOKEN='FFFFFFFFFFFFFFFFFFFFFfFFFFFFFFFFFFFFFFFF'
+################################################################################
 
-client = Client()
-url = client.authorization_url(client_id=MY_STRAVA_CLIENT_ID,
-                               redirect_uri='http://127.0.0.1:5000/authorization')
-                               
-print '\n' + url + '\n'
+# Begin the code
 
+# client = Client()
+# url = client.authorization_url(client_id=MY_STRAVA_CLIENT_ID,
+                               # redirect_uri='http://127.0.0.1:5000/authorization')                               
+# print '\n' + url + '\n'
+
+# Get current athlete details
 client = Client(access_token=STORED_ACCESS_TOKEN)
-client.get_athlete() # Get current athlete details
+client.get_athlete() 
+#print client.get_athlete()
 
-print client.get_athlete()
-
-print '\n'
-out = csv.writer(open("C://Users//hp//Desktop//myfile.csv","w"), delimiter=';',quoting=csv.QUOTE_MINIMAL)
+out = csv.writer(open(csv_filepath,"w"), delimiter=';',quoting=csv.QUOTE_MINIMAL)
 
 # List the next parameters of activities.
 # https://pythonhosted.org/stravalib/api.html#stravalib.model.Activity
-for activity in client.get_activities(after = "2016-10-31T00:00:00Z", before = "2017-10-31T00:00:00Z", limit=None):
+for activity in client.get_activities(after = start_date, before = end_date, limit=None):
     data = []
     name = '{0.name}'.format(activity)
     data.append(name)
@@ -75,5 +81,5 @@ for activity in client.get_activities(after = "2016-10-31T00:00:00Z", before = "
     data.append(map)     
     out.writerow(data)
     
-
+print '\n' + 'Generated file!!! ' + csv_filepath + '\n'
     
