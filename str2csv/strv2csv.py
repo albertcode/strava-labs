@@ -17,8 +17,8 @@ sys.setdefaultencoding('utf8')
 #   Constants    
 ################################################################################
 csv_filepath = "C://Users//hp//Desktop//myfile.csv"
-start_date = "2016-10-31T00:00:00Z"
-end_date = "2017-10-31T00:00:00Z"
+start_date = "2017-10-31T00:00:00Z"
+end_date = "2018-02-02T00:00:00Z"
 m_in_km_c = 1000.0
 ms2kmh_c = 3.6
 ms2minkm_c = 16.666666666667
@@ -27,6 +27,9 @@ ms2minkm_c = 16.666666666667
 MY_STRAVA_CLIENT_ID=00000
 MY_STRAVA_CLIENT_SECRET='FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF'
 STORED_ACCESS_TOKEN='FFFFFFFFFFFFFFFFFFFFFfFFFFFFFFFFFFFFFFFF'
+MY_STRAVA_CLIENT_ID=22784
+MY_STRAVA_CLIENT_SECRET='f0e0919fb5eb1136668b8d7876778c8f7ae60f43'
+STORED_ACCESS_TOKEN='2ddadc77b22dd4542efe714fbfc80f7967761384'
 ################################################################################
 
 # Begin the code
